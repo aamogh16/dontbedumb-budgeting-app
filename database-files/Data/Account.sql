@@ -1,0 +1,111 @@
+CREATE TABLE Account (
+   acctID INT PRIMARY KEY AUTO_INCREMENT,
+   accType VARCHAR(50) NOT NULL,
+   balance INT DEFAULT 0,
+   institution VARCHAR(100),
+   owner INT NOT NULL,
+   userID INT NOT NULL,
+   FOREIGN KEY (userID) REFERENCES User(userID) ON DELETE CASCADE
+);
+
+
+insert into Account (acctID, accType, balance, institution, userID) values (1, 'Checking', 176268, 'Connemara Credit Union Limited', 4);
+insert into Account (acctID, accType, balance, institution, userID) values (2, 'Savings', 932750, 'PNC BANK', 6);
+insert into Account (acctID, accType, balance, institution, userID) values (3, 'Money Market', 886365, 'BANCO BPM SOCIETA'' PER AZIONI', 2);
+insert into Account (acctID, accType, balance, institution, userID) values (4, 'Certificate of Deposit', 482247, 'BANCA DI CREDITO COOPERATIVO DI NETTUNO SOCIETA'' COOPERATIVA', 5);
+insert into Account (acctID, accType, balance, institution, userID) values (5, 'Checking', 377148, 'BANCO BPM SOCIETA'' PER AZIONI', 8);
+insert into Account (acctID, accType, balance, institution, userID) values (6, 'Savings', 368262, 'Raiffeisenbank Krems eGen', 10);
+insert into Account (acctID, accType, balance, institution, userID) values (7, 'Business Checking', 700192, 'CENTRAL BANK', 9);
+insert into Account (acctID, accType, balance, institution, userID) values (8, 'Money Market', 779809, 'PNC BANK', 9);
+insert into Account (acctID, accType, balance, institution, userID) values (9, 'Savings', 972730, 'Volksbank an der Niers eG', 7);
+insert into Account (acctID, accType, balance, institution, userID) values (10, 'Checking', 614733, 'KEY BANK', 7);
+insert into Account (acctID, accType, balance, institution, userID) values (11, 'Certificate of Deposit', 607814, 'Raiffeisenbank Ilz-Großsteinbach-Riegersburg eGen', 8);
+insert into Account (acctID, accType, balance, institution, userID) values (12, 'Savings', 522736, 'Fio banka, a.s.', 9);
+insert into Account (acctID, accType, balance, institution, userID) values (13, 'Money Market', 831853, 'Raiffeisenbank im Thayatal eGen', 6);
+insert into Account (acctID, accType, balance, institution, userID) values (14, 'Checking', 278501, 'WELLS FARGO BANK', 9);
+insert into Account (acctID, accType, balance, institution, userID) values (15, 'Savings', 233047, 'WELLS FARGO BANK', 8);
+insert into Account (acctID, accType, balance, institution, userID) values (16, 'Credit Card', 999447, 'CAPITAL ONE', 6);
+insert into Account (acctID, accType, balance, institution, userID) values (17, 'Business Savings', 874532, 'COMMUNITY STATE BANK', 5);
+insert into Account (acctID, accType, balance, institution, userID) values (18, 'Checking', 445005, 'Sparkasse Imst AG', 3);
+insert into Account (acctID, accType, balance, institution, userID) values (19, 'Money Market', 505682, 'FARMERS STATE BANK', 8);
+insert into Account (acctID, accType, balance, institution, userID) values (20, 'Savings', 605277, 'Česká spořitelna, a.s.', 6);
+insert into Account (acctID, accType, balance, institution, userID) values (21, 'Checking', 619190, 'CITIZENS NATIONAL BANK', 10);
+insert into Account (acctID, accType, balance, institution, userID) values (22, 'Certificate of Deposit', 439017, 'CORNERSTONE BANK', 7);
+insert into Account (acctID, accType, balance, institution, userID) values (23, 'Savings', 348156, 'XENITH BANK', 10);
+insert into Account (acctID, accType, balance, institution, userID) values (24, 'Investment Account', 974406, 'Oddo BHF SCA', 1);
+insert into Account (acctID, accType, balance, institution, userID) values (25, 'Business Checking', 690525, 'FIRST STATE BANK', 5);
+insert into Account (acctID, accType, balance, institution, userID) values (26, 'Money Market', 580949, 'Volksbank Darmstadt Mainz eG', 7);
+insert into Account (acctID, accType, balance, institution, userID) values (27, 'Checking', 263295, 'FIRST STATE BANK', 8);
+insert into Account (acctID, accType, balance, institution, userID) values (28, 'Savings', 614770, 'CAMDEN NATIONAL BANK', 7);
+insert into Account (acctID, accType, balance, institution, userID) values (29, 'Checking', 142029, 'US BANK', 8);
+insert into Account (acctID, accType, balance, institution, userID) values (30, 'Auto Loan', 132430, 'Volkswagen Bank Gesellschaft mit beschränkter Haftung', 1);
+insert into Account (acctID, accType, balance, institution, userID) values (31, 'Savings', 26649, 'FIRST STATE BANK', 7);
+insert into Account (acctID, accType, balance, institution, userID) values (32, 'Credit Card', 235545, 'CAPITAL ONE', 2);
+insert into Account (acctID, accType, balance, institution, userID) values (33, 'Checking', 258817, 'BANCO BPM SOCIETA'' PER AZIONI', 6);
+insert into Account (acctID, accType, balance, institution, userID) values (34, 'Money Market', 319296, 'Kreissparkasse Birkenfeld (Birkenfelder Landesbank)', 6);
+insert into Account (acctID, accType, balance, institution, userID) values (35, 'Business Savings', 773878, 'UNITED BANK', 3);
+insert into Account (acctID, accType, balance, institution, userID) values (36, 'Checking', 814419, 'PROSPERITY BANK', 10);
+insert into Account (acctID, accType, balance, institution, userID) values (37, 'Savings', 165025, 'BMO HARRIS BANK', 9);
+insert into Account (acctID, accType, balance, institution, userID) values (38, 'Certificate of Deposit', 103227, 'Raiffeisenbank Ems-Vechte eG', 5);
+insert into Account (acctID, accType, balance, institution, userID) values (39, 'Money Market', 923765, 'BERKSHIRE BANK', 1);
+insert into Account (acctID, accType, balance, institution, userID) values (40, 'Checking', 430052, 'Kutxabank, S.A.', 9);
+insert into Account (acctID, accType, balance, institution, userID) values (41, 'Savings', 734831, 'Raiffeisenbank Bruck-Carnuntum eGen', 2);
+insert into Account (acctID, accType, balance, institution, userID) values (42, 'Business Checking', 352269, 'AMERIS BANK', 2);
+insert into Account (acctID, accType, balance, institution, userID) values (43, 'Checking', 364562, 'BANK OF AMERICA', 2);
+insert into Account (acctID, accType, balance, institution, userID) values (44, 'Savings', 413860, 'BANK OF AMERICA', 3);
+insert into Account (acctID, accType, balance, institution, userID) values (45, 'Checking', 54672, 'BPCE', 1);
+insert into Account (acctID, accType, balance, institution, userID) values (46, 'Money Market', 310093, 'VR SüdBank eG', 7);
+insert into Account (acctID, accType, balance, institution, userID) values (47, 'Certificate of Deposit', 888901, 'Sparkasse Neuwied', 7);
+insert into Account (acctID, accType, balance, institution, userID) values (48, 'Investment Account', 540418, 'UBS Europe SE', 3);
+insert into Account (acctID, accType, balance, institution, userID) values (49, 'Checking', 315337, 'Nationale-Nederlanden Bank N.V.', 9);
+insert into Account (acctID, accType, balance, institution, userID) values (50, 'Business Savings', 852316, 'PACIFIC WESTERN BANK', 3);
+insert into Account (acctID, accType, balance, institution, userID) values (51, 'Money Market', 905357, 'DEUTSCHE BANK S.P.A.', 1);
+insert into Account (acctID, accType, balance, institution, userID) values (52, 'Checking', 621530, 'FIRST BANK', 5);
+insert into Account (acctID, accType, balance, institution, userID) values (53, 'Savings', 629447, 'FIRST NATIONAL BANK', 6);
+insert into Account (acctID, accType, balance, institution, userID) values (54, 'Certificate of Deposit', 886266, 'RENASANT BANK', 7);
+insert into Account (acctID, accType, balance, institution, userID) values (55, 'Checking', 648081, 'BANCO BPM SOCIETA'' PER AZIONI', 7);
+insert into Account (acctID, accType, balance, institution, userID) values (56, 'Money Market', 475957, 'FIRST NATIONAL BANK', 3);
+insert into Account (acctID, accType, balance, institution, userID) values (57, 'Home Loan', 551127, 'Crédit Agricole home loan SFH', 1);
+insert into Account (acctID, accType, balance, institution, userID) values (58, 'Savings', 795561, 'Volksbank Hohenlohe eG', 2);
+insert into Account (acctID, accType, balance, institution, userID) values (59, 'Business Checking', 891609, 'Raiffeisenbank Mittlere Südoststeiermark eGen', 3);
+insert into Account (acctID, accType, balance, institution, userID) values (60, 'Checking', 43577, 'BANCO BPM SOCIETA'' PER AZIONI', 4);
+insert into Account (acctID, accType, balance, institution, userID) values (61, 'Savings', 140097, 'PIONEER BANK, SSB', 7);
+insert into Account (acctID, accType, balance, institution, userID) values (62, 'Checking', 115901, 'BANCA DEL PIEMONTE S.P.A.', 4);
+insert into Account (acctID, accType, balance, institution, userID) values (63, 'Money Market', 493620, 'BANK OF INDIA', 4);
+insert into Account (acctID, accType, balance, institution, userID) values (64, 'Business Savings', 701231, 'BANCA NAZIONALE DEL LAVORO S.P.A. (IN FORMA CONTRATTA BNL S.P.A.)', 5);
+insert into Account (acctID, accType, balance, institution, userID) values (65, 'Checking', 159412, 'MONETA Money Bank, a.s.', 4);
+insert into Account (acctID, accType, balance, institution, userID) values (66, 'Savings', 200954, 'STONEGATE BANK', 3);
+insert into Account (acctID, accType, balance, institution, userID) values (67, 'Checking', 62983, 'COMPASS BANK', 3);
+insert into Account (acctID, accType, balance, institution, userID) values (68, 'Certificate of Deposit', 163984, 'PINNACLE BANK', 8);
+insert into Account (acctID, accType, balance, institution, userID) values (69, 'Money Market', 421896, 'NEW YORK COMMUNITY BANK', 8);
+insert into Account (acctID, accType, balance, institution, userID) values (70, 'Checking', 328226, 'FIRST NATIONAL BANK', 3);
+insert into Account (acctID, accType, balance, institution, userID) values (71, 'Investment Account', 74686, 'European Depositary Bank S.A.', 2);
+insert into Account (acctID, accType, balance, institution, userID) values (72, 'Savings', 577435, 'LIETUVOS CENTRINĖ KREDITO UNIJA', 9);
+insert into Account (acctID, accType, balance, institution, userID) values (73, 'Business Checking', 701788, 'PEOPLES STATE BANK', 5);
+insert into Account (acctID, accType, balance, institution, userID) values (74, 'Checking', 256764, 'FIRSTBANK', 9);
+insert into Account (acctID, accType, balance, institution, userID) values (75, 'Money Market', 695446, 'FNZ Bank SE', 4);
+insert into Account (acctID, accType, balance, institution, userID) values (76, 'Savings', 197524, 'BANCO BPM SOCIETA'' PER AZIONI', 9);
+insert into Account (acctID, accType, balance, institution, userID) values (77, 'Certificate of Deposit', 627233, 'BANCO BPM SOCIETA'' PER AZIONI', 9);
+insert into Account (acctID, accType, balance, institution, userID) values (78, 'Business Savings', 782132, 'BNP Paribas Fortis', 7);
+insert into Account (acctID, accType, balance, institution, userID) values (79, 'Checking', 54837, 'BMO HARRIS BANK', 10);
+insert into Account (acctID, accType, balance, institution, userID) values (80, 'Savings', 599935, 'GREAT LAKES CREDIT UNION', 6);
+insert into Account (acctID, accType, balance, institution, userID) values (81, 'Money Market', 399839, 'Caja Rural de Extremadura, Sociedad Cooperativa de Crédito', 1);
+insert into Account (acctID, accType, balance, institution, userID) values (82, 'Checking', 284256, 'HERITAGE BANK', 8);
+insert into Account (acctID, accType, balance, institution, userID) values (83, 'Savings', 233635, 'BANK OF AMERICA', 3);
+insert into Account (acctID, accType, balance, institution, userID) values (84, 'Business Checking', 239771, 'IBERIABANK', 5);
+insert into Account (acctID, accType, balance, institution, userID) values (85, 'Certificate of Deposit', 362425, 'Raiffeisenbank Bruck-Carnuntum eGen', 4);
+insert into Account (acctID, accType, balance, institution, userID) values (86, 'Checking', 214163, 'Ester finance technologies', 7);
+insert into Account (acctID, accType, balance, institution, userID) values (87, 'Money Market', 855152, 'CASSA RURALE VALSUGANA E TESINO - BANCA DI CREDITO COOPERATIVO - SOCIETA'' COOPERATIVA', 7);
+insert into Account (acctID, accType, balance, institution, userID) values (88, 'Savings', 532997, 'BMO HARRIS BANK', 3);
+insert into Account (acctID, accType, balance, institution, userID) values (89, 'Checking', 574252, 'KEYBANK', 4);
+insert into Account (acctID, accType, balance, institution, userID) values (90, 'Business Savings', 523995, 'BANNER BANK', 10);
+insert into Account (acctID, accType, balance, institution, userID) values (91, 'Money Market', 332093, 'mediserv Bank GmbH', 6);
+insert into Account (acctID, accType, balance, institution, userID) values (92, 'Checking', 322019, 'CRÉDIT AGRICOLE ITALIA S.P.A.', 7);
+insert into Account (acctID, accType, balance, institution, userID) values (93, 'Savings', 395680, 'PACIFIC WESTERN BANK', 5);
+insert into Account (acctID, accType, balance, institution, userID) values (94, 'Certificate of Deposit', 202745, 'UNITED BANK', 1);
+insert into Account (acctID, accType, balance, institution, userID) values (95, 'Credit Card', 946189, 'BANK OF AMERICA', 5);
+insert into Account (acctID, accType, balance, institution, userID) values (96, 'Checking', 468747, 'GREAT LAKES CREDIT UNION', 2);
+insert into Account (acctID, accType, balance, institution, userID) values (97, 'Savings', 117092, 'INTERNATIONAL BANK OF COMMERCE', 9);
+insert into Account (acctID, accType, balance, institution, userID) values (98, 'Investment Account', 981027, 'Deutsche Bank Luxembourg S.A.', 1);
+insert into Account (acctID, accType, balance, institution, userID) values (99, 'Money Market', 347712, 'BRANCH BANKING & TRUST COMPANY', 8);
+insert into Account (acctID, accType, balance, institution, userID) values (100, 'Business Checking', 995643, 'Caisse régionale de crédit agricole mutuel des Savoie', 5);

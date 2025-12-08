@@ -1,0 +1,111 @@
+CREATE TABLE Subscription (
+   subID INT PRIMARY KEY AUTO_INCREMENT,
+   name VARCHAR(100) NOT NULL,
+   amount INT NOT NULL,
+   frequency INT,
+   startDate DATETIME NOT NULL,
+   endDate DATETIME,
+   accountID INT NOT NULL,
+   FOREIGN KEY (accountID) REFERENCES Account(acctID) ON DELETE CASCADE
+);
+
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (15432, 'Netflix', 15, 30, '2024-01-15 00:00:00', '2025-01-15 00:00:00', 10247);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (28765, 'Spotify Premium', 10, 30, '2024-02-01 00:00:00', '2025-02-01 00:00:00', 23891);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (39124, 'Amazon Prime', 14, 30, '2024-03-10 00:00:00', '2025-03-10 00:00:00', 34562);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (47856, 'Disney+', 8, 30, '2024-01-20 00:00:00', '2025-01-20 00:00:00', 45789);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (52341, 'Hulu', 12, 30, '2024-04-05 00:00:00', '2025-04-05 00:00:00', 56234);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (63789, 'HBO Max', 15, 30, '2024-05-12 00:00:00', '2025-05-12 00:00:00', 67891);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (74512, 'Apple Music', 10, 30, '2024-02-15 00:00:00', '2025-02-15 00:00:00', 78456);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (85934, 'YouTube Premium', 12, 30, '2024-03-20 00:00:00', '2025-03-20 00:00:00', 89123);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (96127, 'Adobe Creative Cloud', 55, 30, '2024-01-10 00:00:00', '2025-01-10 00:00:00', 91567);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (10856, 'Microsoft 365', 10, 30, '2024-02-25 00:00:00', '2025-02-25 00:00:00', 12389);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (21473, 'iCloud Storage', 3, 30, '2024-04-18 00:00:00', '2025-04-18 00:00:00', 24567);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (32918, 'Dropbox', 12, 30, '2024-05-22 00:00:00', '2025-05-22 00:00:00', 35891);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (43265, 'Google One', 2, 30, '2024-03-08 00:00:00', '2025-03-08 00:00:00', 46234);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (54692, 'LinkedIn Premium', 30, 30, '2024-01-28 00:00:00', '2025-01-28 00:00:00', 57812);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (65847, 'The New York Times', 17, 30, '2024-02-14 00:00:00', '2025-02-14 00:00:00', 68945);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (76234, 'The Wall Street Journal', 39, 30, '2024-03-19 00:00:00', '2025-03-19 00:00:00', 79234);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (87591, 'Audible', 15, 30, '2024-04-12 00:00:00', '2025-04-12 00:00:00', 81567);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (98326, 'Kindle Unlimited', 10, 30, '2024-05-07 00:00:00', '2025-05-07 00:00:00', 92345);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (19847, 'Planet Fitness', 10, 30, '2024-01-05 00:00:00', '2025-01-05 00:00:00', 13678);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (20965, 'LA Fitness', 35, 30, '2024-02-20 00:00:00', '2025-02-20 00:00:00', 25412);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (31482, 'Peloton App', 13, 30, '2024-03-15 00:00:00', '2025-03-15 00:00:00', 36789);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (42719, 'HelloFresh', 60, 7, '2024-04-10 00:00:00', '2025-04-10 00:00:00', 47123);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (53846, 'Blue Apron', 48, 7, '2024-05-18 00:00:00', '2025-05-18 00:00:00', 58456);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (64273, 'Daily Harvest', 55, 7, '2024-01-22 00:00:00', '2025-01-22 00:00:00', 69812);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (75598, 'Instacart+', 10, 30, '2024-02-08 00:00:00', '2025-02-08 00:00:00', 71234);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (86124, 'DoorDash DashPass', 10, 30, '2024-03-25 00:00:00', '2025-03-25 00:00:00', 82567);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (97451, 'Uber One', 10, 30, '2024-04-30 00:00:00', '2025-04-30 00:00:00', 93891);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (18763, 'Grubhub+', 10, 30, '2024-05-14 00:00:00', '2025-05-14 00:00:00', 14523);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (29587, 'AAA Membership', 60, 365, '2024-01-01 00:00:00', '2025-01-01 00:00:00', 26789);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (30914, 'Costco Membership', 60, 365, '2024-02-12 00:00:00', '2025-02-12 00:00:00', 37456);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (41236, 'Sam''s Club Membership', 45, 365, '2024-03-17 00:00:00', '2025-03-17 00:00:00', 48123);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (52789, 'BJ''s Wholesale Club', 55, 365, '2024-04-22 00:00:00', '2025-04-22 00:00:00', 59678);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (63415, 'Wine Club', 75, 30, '2024-05-28 00:00:00', '2025-05-28 00:00:00', 61234);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (74829, 'Coffee Subscription', 25, 30, '2024-01-18 00:00:00', '2025-01-18 00:00:00', 72891);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (85162, 'Book of the Month', 15, 30, '2024-02-23 00:00:00', '2025-02-23 00:00:00', 84567);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (96537, 'Birchbox', 15, 30, '2024-03-29 00:00:00', '2025-03-29 00:00:00', 95234);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (17284, 'Ipsy', 12, 30, '2024-04-06 00:00:00', '2025-04-06 00:00:00', 16789);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (28619, 'FabFitFun', 50, 90, '2024-05-11 00:00:00', '2025-05-11 00:00:00', 27456);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (39945, 'Dollar Shave Club', 10, 30, '2024-01-26 00:00:00', '2025-01-26 00:00:00', 38912);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (40271, 'Harry''s Razors', 15, 30, '2024-02-16 00:00:00', '2025-02-16 00:00:00', 49567);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (51698, 'Chewy Autoship', 45, 30, '2024-03-21 00:00:00', '2025-03-21 00:00:00', 51234);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (62825, 'BarkBox', 25, 30, '2024-04-27 00:00:00', '2025-04-27 00:00:00', 62891);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (73456, 'KitNipBox', 20, 30, '2024-05-03 00:00:00', '2025-05-03 00:00:00', 74567);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (84782, 'Stitch Fix', 20, 30, '2024-01-14 00:00:00', '2025-01-14 00:00:00', 85234);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (95317, 'Le Tote', 79, 30, '2024-02-19 00:00:00', '2025-02-19 00:00:00', 96789);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (16594, 'Rent the Runway', 89, 30, '2024-03-24 00:00:00', '2025-03-24 00:00:00', 17456);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (27831, 'ClassPass', 49, 30, '2024-04-29 00:00:00', '2025-04-29 00:00:00', 28912);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (38269, 'MasterClass', 15, 30, '2024-05-05 00:00:00', '2025-05-05 00:00:00', 39567);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (49586, 'Skillshare', 32, 30, '2024-01-09 00:00:00', '2025-01-09 00:00:00', 41234);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (50724, 'Coursera Plus', 59, 30, '2024-02-13 00:00:00', '2025-02-13 00:00:00', 52891);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (61859, 'Duolingo Plus', 7, 30, '2024-03-18 00:00:00', '2025-03-18 00:00:00', 64567);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (72486, 'Headspace', 13, 30, '2024-04-23 00:00:00', '2025-04-23 00:00:00', 75234);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (83915, 'Calm', 15, 30, '2024-05-29 00:00:00', '2025-05-29 00:00:00', 86789);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (94248, 'Noom', 59, 30, '2024-01-03 00:00:00', '2025-01-03 00:00:00', 97456);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (15673, 'MyFitnessPal Premium', 10, 30, '2024-02-07 00:00:00', '2025-02-07 00:00:00', 18912);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (26891, 'Strava Premium', 8, 30, '2024-03-12 00:00:00', '2025-03-12 00:00:00', 29567);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (37529, 'Zwift', 15, 30, '2024-04-17 00:00:00', '2025-04-17 00:00:00', 31234);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (48764, 'Nike Training Club', 15, 30, '2024-05-23 00:00:00', '2025-05-23 00:00:00', 42891);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (59182, 'Ancestry DNA', 25, 365, '2024-01-30 00:00:00', '2025-01-30 00:00:00', 54567);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (60437, '23andMe', 99, 365, '2024-02-04 00:00:00', '2025-02-04 00:00:00', 65234);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (71865, 'Zoom Pro', 15, 30, '2024-03-09 00:00:00', '2025-03-09 00:00:00', 76789);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (82294, 'Slack Premium', 8, 30, '2024-04-14 00:00:00', '2025-04-14 00:00:00', 87456);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (93627, 'Grammarly Premium', 12, 30, '2024-05-20 00:00:00', '2025-05-20 00:00:00', 98912);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (14958, 'Canva Pro', 13, 30, '2024-01-25 00:00:00', '2025-01-25 00:00:00', 19567);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (25384, 'Evernote Premium', 8, 30, '2024-02-10 00:00:00', '2025-02-10 00:00:00', 21234);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (36712, 'Notion Pro', 8, 30, '2024-03-16 00:00:00', '2025-03-16 00:00:00', 32891);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (47149, 'Trello Premium', 10, 30, '2024-04-21 00:00:00', '2025-04-21 00:00:00', 44567);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (58573, 'Asana Premium', 11, 30, '2024-05-27 00:00:00', '2025-05-27 00:00:00', 55234);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (69827, 'Monday.com', 39, 30, '2024-01-12 00:00:00', '2025-01-12 00:00:00', 66789);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (70256, 'LastPass Premium', 3, 30, '2024-02-17 00:00:00', '2025-02-17 00:00:00', 77456);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (81683, '1Password', 3, 30, '2024-03-22 00:00:00', '2025-03-22 00:00:00', 88912);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (92418, 'NordVPN', 12, 30, '2024-04-28 00:00:00', '2025-04-28 00:00:00', 99567);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (13745, 'ExpressVPN', 13, 30, '2024-05-04 00:00:00', '2025-05-04 00:00:00', 11234);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (24972, 'Norton 360', 10, 30, '2024-01-19 00:00:00', '2025-01-19 00:00:00', 22891);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (35298, 'McAfee Total Protection', 9, 30, '2024-02-24 00:00:00', '2025-02-24 00:00:00', 34012);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (46625, 'Malwarebytes', 40, 365, '2024-03-30 00:00:00', '2025-03-30 00:00:00', 45234);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (57861, 'GitHub Pro', 4, 30, '2024-04-05 00:00:00', '2025-04-05 00:00:00', 56789);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (68294, 'GitLab Premium', 19, 30, '2024-05-10 00:00:00', '2025-05-10 00:00:00', 67456);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (79517, 'Heroku', 25, 30, '2024-01-16 00:00:00', '2025-01-16 00:00:00', 78912);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (80943, 'DigitalOcean', 12, 30, '2024-02-21 00:00:00', '2025-02-21 00:00:00', 89567);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (91276, 'AWS', 50, 30, '2024-03-27 00:00:00', '2025-03-27 00:00:00', 90234);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (12609, 'Google Cloud', 45, 30, '2024-04-02 00:00:00', '2025-04-02 00:00:00', 10891);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (23835, 'Azure', 55, 30, '2024-05-08 00:00:00', '2025-05-08 00:00:00', 22567);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (34162, 'Shopify', 29, 30, '2024-01-23 00:00:00', '2025-01-23 00:00:00', 33234);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (45587, 'Squarespace', 16, 30, '2024-02-28 00:00:00', '2025-02-28 00:00:00', 44789);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (56914, 'Wix Premium', 14, 30, '2024-03-05 00:00:00', '2025-03-05 00:00:00', 55456);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (67348, 'WordPress.com', 25, 30, '2024-04-11 00:00:00', '2025-04-11 00:00:00', 66912);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (78671, 'Webflow', 16, 30, '2024-05-16 00:00:00', '2025-05-16 00:00:00', 77567);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (89105, 'ConvertKit', 29, 30, '2024-01-21 00:00:00', '2025-01-21 00:00:00', 88234);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (90432, 'Mailchimp', 35, 30, '2024-02-26 00:00:00', '2025-02-26 00:00:00', 99789);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (11768, 'HubSpot', 50, 30, '2024-04-01 00:00:00', '2025-04-01 00:00:00', 10456);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (22195, 'Salesforce', 75, 30, '2024-05-06 00:00:00', '2025-05-06 00:00:00', 21912);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (33521, 'QuickBooks Online', 30, 30, '2024-01-11 00:00:00', '2025-01-11 00:00:00', 33567);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (44856, 'FreshBooks', 15, 30, '2024-02-15 00:00:00', '2025-02-15 00:00:00', 44234);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (55183, 'Xero', 13, 30, '2024-03-20 00:00:00', '2025-03-20 00:00:00', 55789);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (66517, 'Wave Accounting', 0, 30, '2024-04-25 00:00:00', '2025-04-25 00:00:00', 66456);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (77842, 'TurboTax Live', 40, 365, '2024-05-01 00:00:00', '2025-05-01 00:00:00', 77912);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (88279, 'H&R Block', 35, 365, '2024-01-07 00:00:00', '2025-01-07 00:00:00', 88567);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (99604, 'Credit Karma', 0, 30, '2024-02-11 00:00:00', '2025-02-11 00:00:00', 99234);
+insert into Subscription (subID, name, amount, frequency, startDate, endDate, accountID) values (10938, 'Mint Premium', 5, 30, '2024-03-13 00:00:00', '2025-03-13 00:00:00', 10789);
