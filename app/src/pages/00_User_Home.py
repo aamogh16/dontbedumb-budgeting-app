@@ -1,17 +1,18 @@
+import os
+from modules.nav import SideBarLinks
+from datetime import datetime, timedelta
+import pandas as pd
+import plotly.express as px
+import requests
+import streamlit as st
 import logging
 logger = logging.getLogger(__name__)
 
-import streamlit as st
-import requests
-import plotly.express as px
-import pandas as pd
-from datetime import datetime, timedelta
-from modules.nav import SideBarLinks
 
 st.set_page_config(layout='wide')
 SideBarLinks()
 
-API_URL = "http://web-api:4000"
+API_URL = os.getenv("API_URL", "http://localhost:4000")
 
 if 'user_id' not in st.session_state:
     st.switch_page('Home.py')
@@ -54,7 +55,8 @@ try:
                 st.switch_page('pages/10_Budget_Tracker.py')
 
         with col2:
-            st.metric(label="Expenditures", value=f"${totals['expenditures']:,.0f}")
+            st.metric(label="Expenditures",
+                      value=f"${totals['expenditures']:,.0f}")
             if st.button("View Expenses →", key="link_expenses", use_container_width=True):
                 st.session_state['budget_tab'] = 3
                 st.session_state['budget_tab_action'] = 'link'
@@ -62,10 +64,11 @@ try:
 
         with col3:
             st.metric(label="Net Position", value=f"${totals['netPosition']:,.0f}",
-                     delta=f"{totals['savingsRate']}% savings rate")
+                      delta=f"{totals['savingsRate']}% savings rate")
 
         with col4:
-            st.metric(label="Total Savings", value=f"${totals['savings']:,.0f}")
+            st.metric(label="Total Savings",
+                      value=f"${totals['savings']:,.0f}")
             if st.button("View Savings →", key="link_savings", use_container_width=True):
                 st.switch_page('pages/12_Savings.py')
     else:
@@ -101,6 +104,7 @@ st.write("---")
 # Monthly Bar Charts - Last 6 Months
 st.write("### Monthly Trends (Last 6 Months)")
 
+
 def parse_date(date_str):
     if not date_str:
         return None
@@ -112,25 +116,27 @@ def parse_date(date_str):
         except:
             return None
 
+
 def get_month_name(dt):
     return dt.strftime('%b %Y')
+
 
 try:
     response = requests.get(f"{API_URL}/transactions/user/{user_id}")
     if response.status_code == 200:
         transactions = response.json()
-        
+
         # Get last 6 months
         today = datetime.now()
         months = []
         for i in range(5, -1, -1):
             month_date = today - timedelta(days=i*30)
             months.append(month_date.strftime('%b %Y'))
-        
+
         # Initialize data
         income_by_month = {m: 0 for m in months}
         expense_by_month = {m: 0 for m in months}
-        
+
         # Process transactions
         for txn in transactions:
             txn_date = parse_date(txn.get('date'))
@@ -142,17 +148,17 @@ try:
                         income_by_month[month_key] += amount
                     else:
                         expense_by_month[month_key] += abs(amount)
-        
+
         col1, col2 = st.columns(2)
-        
+
         with col1:
             st.write("#### Monthly Income")
             income_df = pd.DataFrame({
                 'Month': list(income_by_month.keys()),
                 'Income': list(income_by_month.values())
             })
-            fig_income = px.bar(income_df, x='Month', y='Income', 
-                               color_discrete_sequence=['#00CC96'])
+            fig_income = px.bar(income_df, x='Month', y='Income',
+                                color_discrete_sequence=['#00CC96'])
             fig_income.update_layout(
                 margin=dict(t=10, b=10, l=10, r=10),
                 xaxis_title="",
@@ -160,7 +166,7 @@ try:
                 showlegend=False
             )
             st.plotly_chart(fig_income, use_container_width=True)
-        
+
         with col2:
             st.write("#### Monthly Expenses")
             expense_df = pd.DataFrame({
@@ -168,7 +174,7 @@ try:
                 'Expenses': list(expense_by_month.values())
             })
             fig_expense = px.bar(expense_df, x='Month', y='Expenses',
-                                color_discrete_sequence=['#EF553B'])
+                                 color_discrete_sequence=['#EF553B'])
             fig_expense.update_layout(
                 margin=dict(t=10, b=10, l=10, r=10),
                 xaxis_title="",
@@ -189,15 +195,18 @@ col1, col2 = st.columns(2)
 with col1:
     st.write("#### Expenses by Category")
     try:
-        response = requests.get(f"{API_URL}/transactions/user/{user_id}/expenses/by-category")
+        response = requests.get(
+            f"{API_URL}/transactions/user/{user_id}/expenses/by-category")
         if response.status_code == 200:
             categories = response.json()
             if categories:
                 df = pd.DataFrame(categories)
                 df.columns = ['Category', 'Amount']
                 fig = px.pie(df, values='Amount', names='Category', hole=0.4)
-                fig.update_traces(textposition='inside', textinfo='percent+label')
-                fig.update_layout(showlegend=False, margin=dict(t=0, b=0, l=0, r=0))
+                fig.update_traces(textposition='inside',
+                                  textinfo='percent+label')
+                fig.update_layout(showlegend=False,
+                                  margin=dict(t=0, b=0, l=0, r=0))
                 st.plotly_chart(fig, use_container_width=True)
             else:
                 st.info("No expense data yet")
@@ -207,15 +216,18 @@ with col1:
 with col2:
     st.write("#### Income by Source")
     try:
-        response = requests.get(f"{API_URL}/transactions/user/{user_id}/income/by-source")
+        response = requests.get(
+            f"{API_URL}/transactions/user/{user_id}/income/by-source")
         if response.status_code == 200:
             sources = response.json()
             if sources:
                 df = pd.DataFrame(sources)
                 df.columns = ['Source', 'Amount']
                 fig = px.pie(df, values='Amount', names='Source', hole=0.4)
-                fig.update_traces(textposition='inside', textinfo='percent+label')
-                fig.update_layout(showlegend=False, margin=dict(t=0, b=0, l=0, r=0))
+                fig.update_traces(textposition='inside',
+                                  textinfo='percent+label')
+                fig.update_layout(showlegend=False,
+                                  margin=dict(t=0, b=0, l=0, r=0))
                 st.plotly_chart(fig, use_container_width=True)
             else:
                 st.info("No income data yet")
@@ -244,7 +256,8 @@ try:
                 col1, col2, col3 = st.columns([3, 1, 1])
                 with col1:
                     st.write(f"**{txn['description']}**")
-                    st.caption(f"{txn['categoryName'] or 'Uncategorized'} • {txn['date'][:16]}")
+                    st.caption(
+                        f"{txn['categoryName'] or 'Uncategorized'} • {txn['date'][:16]}")
                 with col2:
                     amount = float(txn['amount'])
                     if amount > 0:

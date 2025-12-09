@@ -1,16 +1,18 @@
+import os
+from modules.nav import BackToDashboard
+from modules.nav import SideBarLinks
+import requests
+import streamlit as st
 import logging
 logger = logging.getLogger(__name__)
 
-import streamlit as st
-import requests
-from modules.nav import SideBarLinks
 
 st.set_page_config(layout='wide')
 SideBarLinks()
-from modules.nav import BackToDashboard
 BackToDashboard()
 
-API_URL = "http://web-api:4000"
+
+API_URL = os.getenv("API_URL", "http://localhost:4000")
 
 if 'user_id' not in st.session_state:
     st.switch_page('Home.py')
@@ -30,10 +32,10 @@ try:
     response = requests.get(f"{API_URL}/insights/user/{user_id}/health-score")
     if response.status_code == 200:
         health = response.json()
-        
+
         score = health['score']
         label = health['label']
-        
+
         # Color based on score
         if score >= 80:
             color = "green"
@@ -43,16 +45,16 @@ try:
             color = "orange"
         else:
             color = "red"
-        
+
         col1, col2, col3 = st.columns([2, 1, 1])
-        
+
         with col1:
             st.metric("Your Score", f"{score}/100", label)
             st.progress(score / 100)
-        
+
         with col2:
             st.metric("Savings Rate", f"{health['savingsRate']}%")
-        
+
         with col3:
             net = health['netPosition']
             if net >= 0:
@@ -72,7 +74,7 @@ try:
     response = requests.get(f"{API_URL}/insights/user/{user_id}")
     if response.status_code == 200:
         insights = response.json()
-        
+
         if insights:
             for insight in insights:
                 st.info(insight)
@@ -88,14 +90,15 @@ st.write("---")
 st.write("### Personalized Recommendations")
 
 try:
-    response = requests.get(f"{API_URL}/insights/user/{user_id}/recommendations")
+    response = requests.get(
+        f"{API_URL}/insights/user/{user_id}/recommendations")
     if response.status_code == 200:
         recommendations = response.json()
-        
+
         if recommendations:
             for rec in recommendations:
                 impact = rec['impact']
-                
+
                 # Set color based on impact
                 if impact == 'Critical':
                     box_type = 'error'
@@ -105,14 +108,15 @@ try:
                     box_type = 'success'
                 else:
                     box_type = 'info'
-                
+
                 with st.container():
                     st.write(f"**{rec['title']}**")
                     st.write(rec['description'])
                     st.caption(f"Impact: {impact} | Action: {rec['action']}")
                     st.write("---")
         else:
-            st.success("No specific recommendations right now - keep up the good work!")
+            st.success(
+                "No specific recommendations right now - keep up the good work!")
 
 except Exception as e:
     st.error(f"Could not load recommendations: {str(e)}")
@@ -123,32 +127,33 @@ st.write("---")
 st.write("### Spending Optimization Opportunities")
 
 try:
-    response = requests.get(f"{API_URL}/transactions/user/{user_id}/expenses/by-category")
+    response = requests.get(
+        f"{API_URL}/transactions/user/{user_id}/expenses/by-category")
     if response.status_code == 200:
         categories = response.json()
-        
+
         if categories:
             st.write("Areas where you could potentially save money:")
             st.write("")
-            
+
             for cat in categories[:3]:
                 spent = float(cat['total'])
                 potential = spent * 0.15  # 15% potential savings
-                
+
                 col1, col2, col3 = st.columns([2, 1, 1])
-                
+
                 with col1:
                     st.write(f"**{cat['category']}**")
                     st.caption(f"Current: ${spent:,.0f}/month")
-                
+
                 with col2:
                     st.write(f":green[Save ${potential:,.0f}]")
                     st.caption("15% reduction")
-                
+
                 with col3:
                     annual = potential * 12
                     st.write(f"${annual:,.0f}/year")
-                
+
                 st.write("---")
         else:
             st.info("Not enough spending data to analyze yet")

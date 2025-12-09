@@ -1,16 +1,18 @@
+import os
+from modules.nav import BackToDashboard
+from modules.nav import SideBarLinks
+import requests
+import streamlit as st
 import logging
 logger = logging.getLogger(__name__)
 
-import streamlit as st
-import requests
-from modules.nav import SideBarLinks
 
 st.set_page_config(layout='wide')
 SideBarLinks()
-from modules.nav import BackToDashboard
 BackToDashboard()
 
-API_URL = "http://web-api:4000"
+
+API_URL = os.getenv("API_URL", "http://localhost:4000")
 
 st.title("User Personas")
 st.write("Select a user to view their financial profile")
@@ -76,28 +78,30 @@ for i, user in enumerate(users):
     with col1 if i % 2 == 0 else col2:
         # Check if this user is selected
         is_selected = st.session_state.get('user_id') == user['id']
-        
+
         # Card container
         with st.container():
             if is_selected:
                 st.success(f"**{user['name']}** - Currently Selected")
             else:
                 st.write(f"**{user['name']}**")
-            
+
             st.caption(user['type'])
             st.write(user['description'])
-            
+
             # Fetch financial summary
             try:
-                response = requests.get(f"{API_URL}/budgets/user/{user['id']}/totals")
+                response = requests.get(
+                    f"{API_URL}/budgets/user/{user['id']}/totals")
                 if response.status_code == 200:
                     totals = response.json()
-                    
+
                     mcol1, mcol2, mcol3 = st.columns(3)
                     with mcol1:
                         st.metric("Income", f"${totals['income']:,.0f}")
                     with mcol2:
-                        st.metric("Spending", f"${totals['expenditures']:,.0f}")
+                        st.metric(
+                            "Spending", f"${totals['expenditures']:,.0f}")
                     with mcol3:
                         net = totals['netPosition']
                         if net >= 0:
@@ -106,12 +110,12 @@ for i, user in enumerate(users):
                             st.metric("Net", f"-${abs(net):,.0f}")
             except:
                 pass
-            
+
             # Pain points
             st.write("**Challenges:**")
             for point in user['pain_points']:
                 st.caption(f"• {point}")
-            
+
             # Select button
             if not is_selected:
                 if st.button(f"Switch to {user['name']}", key=f"select_{user['id']}", use_container_width=True):
@@ -120,5 +124,5 @@ for i, user in enumerate(users):
                     st.session_state['first_name'] = user['name'].split()[0]
                     st.session_state['role'] = user['role']
                     st.switch_page('pages/00_User_Home.py')
-            
+
             st.write("---")

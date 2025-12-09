@@ -8,6 +8,7 @@ services:
     volumes: ["./app/src:/appcode"]
     environment:
       - WATCHPACK_POLLING=true
+      - API_URL=http://web-api:4000
     ports:
       - 8501:8501
 
@@ -27,6 +28,8 @@ services:
     image: mysql:9
     container_name: mysql_db
     hostname: db
+    environment:
+      - MYSQL_ROOT_HOST=%
     volumes:
       - "./database-files:/docker-entrypoint-initdb.d/:ro"
       - "mysql_data:/var/lib/mysql"
