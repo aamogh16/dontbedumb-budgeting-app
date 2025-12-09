@@ -2,6 +2,10 @@
 
 A personal finance management application built for CS 3200 Database Design at Northeastern University.
 
+# Video Demo
+
+https://www.dropbox.com/scl/fi/ro9x1vjx5j1upcc3dixup/ProjectVideo.mp4?rlkey=d7t5e4x74blulxjwtu23hwfu5&st=fg08zq2v&dl=0
+
 ## Project Overview
 
 "Don't Be Dumb Budgeting" is a full-stack web application that helps users manage their personal finances. The app supports multiple user personas with many helpful budgeting features.
