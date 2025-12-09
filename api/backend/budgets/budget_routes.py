@@ -85,7 +85,7 @@ def get_user_categories(user_id):
     
     return jsonify(categories), 200
 
-# Get all budgets for user
+# Get all budgets for user (full details)
 @budgets.route('/user/<int:user_id>', methods=['GET'])
 def get_user_budgets(user_id):
     cursor = db.get_db().cursor()
@@ -103,7 +103,7 @@ def get_user_budgets(user_id):
     cursor.execute('''
         SELECT b.budgetID, b.name, b.limitAmount, b.budgetType, b.categoryID,
                c.name as categoryName,
-               COALESCE(ABS(SUM(t.amount)), 0) as spent
+               COALESCE(SUM(CASE WHEN t.amount < 0 THEN ABS(t.amount) ELSE 0 END), 0) as spent
         FROM Budget b
         LEFT JOIN Category c ON b.categoryID = c.categoryID
         LEFT JOIN Transaction t ON b.budgetID = t.budgetID
@@ -126,22 +126,45 @@ def get_user_budgets(user_id):
     
     return jsonify(result), 200
 
-# Get budgets for dropdown (for transaction form)
+# Get budgets for dropdown and display (with full details)
 @budgets.route('/user/<int:user_id>/list', methods=['GET'])
 def get_user_budgets_list(user_id):
     cursor = db.get_db().cursor()
     
+    # Get total expenses for user (for total budget)
     cursor.execute('''
-        SELECT budgetID, name, budgetType
-        FROM Budget
-        WHERE userID = %s
-        ORDER BY budgetType, name
+        SELECT COALESCE(ABS(SUM(t.amount)), 0) as total_spent
+        FROM Transaction t
+        JOIN Account a ON t.accountID = a.acctID
+        WHERE a.userID = %s AND t.amount < 0
+    ''', (user_id,))
+    total_spent = float(cursor.fetchone()['total_spent'])
+    
+    cursor.execute('''
+        SELECT b.budgetID, b.name, b.limitAmount, b.budgetType, b.categoryID,
+               c.name as categoryName,
+               COALESCE(SUM(CASE WHEN t.amount < 0 THEN ABS(t.amount) ELSE 0 END), 0) as spent
+        FROM Budget b
+        LEFT JOIN Category c ON b.categoryID = c.categoryID
+        LEFT JOIN Transaction t ON b.budgetID = t.budgetID
+        WHERE b.userID = %s
+        GROUP BY b.budgetID, b.name, b.limitAmount, b.budgetType, b.categoryID, c.name
+        ORDER BY b.budgetType, b.name
     ''', (user_id,))
     
     budgets_list = cursor.fetchall()
+    
+    # Override spent amount for total budget type
+    result = []
+    for budget in budgets_list:
+        budget_dict = dict(budget)
+        if budget_dict['budgetType'] == 'total':
+            budget_dict['spent'] = total_spent
+        result.append(budget_dict)
+    
     cursor.close()
     
-    return jsonify(budgets_list), 200
+    return jsonify(result), 200
 
 # Create budget
 @budgets.route('/', methods=['POST'])
